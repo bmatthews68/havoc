@@ -1,7 +1,11 @@
 package com.btmatthews.havoc.java.tasks;
 
-/**
- * Created by bmatthews68 on 19/12/2013.
- */
-public class CompileJavaTaskFactory {
+import com.btmatthews.havoc.task.Task;
+import com.btmatthews.havoc.task.TaskFactory;
+
+public class CompileJavaTaskFactory implements TaskFactory {
+    @Override
+    public Task createTask() {
+        return new CompileJavaTask();
+    }
 }

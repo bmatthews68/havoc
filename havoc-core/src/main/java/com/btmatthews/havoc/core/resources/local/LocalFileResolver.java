@@ -32,22 +32,43 @@ public class LocalFileResolver implements ResourceResolver<File> {
         }
     }
 
-    public void resolve(final File root,
-                        final String path,
-                        final ResourceResolutionCallback<File> callback) {
-        final File folder = path != null ? new File(root, path) : root;
-        for (final File file : folder.listFiles()) {
-            final String newPath = new StringBuilder(path)
-                    .append(File.pathSeparator)
-                    .append(file.getName())
-                    .toString();
-            if (file.isDirectory()) {
-                resolve(root, newPath, callback);
+    private void resolve(final File root,
+                         final String path,
+                         final ResourceResolutionCallback<File> callback) {
+        final File[] files;
+        if (path == null) {
+            files = root.listFiles();
+        } else {
+            final File folder = new File(root, path);
+            if (folder.exists()) {
+                files = folder.listFiles();
             } else {
-                if (isIncluded(newPath) && !isExcluded(newPath)) {
-                    callback.resolved(file);
+                files = null;
+            }
+        }
+        if (files != null) {
+            for (final File file : files) {
+                final String newPath = getPath(path, file);
+                if (file.isDirectory()) {
+                    resolve(root, newPath, callback);
+                } else {
+                    if (isIncluded(newPath) && !isExcluded(newPath)) {
+                        callback.resolved(file);
+                    }
                 }
             }
+        }
+    }
+
+    private String getPath(final String path,
+                           final File file) {
+        if (path == null) {
+            return file.getName();
+        } else {
+            return new StringBuilder(path)
+                    .append(File.separator)
+                    .append(file.getName())
+                    .toString();
         }
     }
 

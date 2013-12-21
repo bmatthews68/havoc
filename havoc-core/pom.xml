@@ -9,12 +9,11 @@
         <artifactId>havoc</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>havoc-task-api</artifactId>
+    <artifactId>havoc-core</artifactId>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

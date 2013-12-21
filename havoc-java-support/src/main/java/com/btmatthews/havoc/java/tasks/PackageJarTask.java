@@ -1,7 +1,16 @@
 package com.btmatthews.havoc.java.tasks;
 
-/**
- * Created by bmatthews68 on 19/12/2013.
- */
-public class PackageJarTask {
+import com.btmatthews.havoc.task.Task;
+import com.btmatthews.havoc.task.TaskContext;
+
+public class PackageJarTask implements Task {
+
+    @Override
+    public String getTaskName() {
+        return "Package JAR";
+    }
+
+    @Override
+    public void perform(final TaskContext context) {
+    }
 }

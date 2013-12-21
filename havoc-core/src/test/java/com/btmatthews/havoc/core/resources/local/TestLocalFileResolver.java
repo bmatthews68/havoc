@@ -22,7 +22,7 @@ public class TestLocalFileResolver {
         );
         fileResolver.resolve(new ResourceResolutionCallback<File>() {
             @Override
-            public void resolved(File resource) {
+            public void resolved(final File resource) {
                 System.out.println(resource.getPath());
             }
         });

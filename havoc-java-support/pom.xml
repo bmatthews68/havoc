@@ -13,8 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>com.btmatthews.havoc</groupId>
-            <artifactId>havoc-task-api</artifactId>
-            <version>${project.version}</version>
+            <artifactId>havoc-core</artifactId>
         </dependency>
     </dependencies>
 </project>
